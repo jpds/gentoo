@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~sparc ~x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
-IUSE="captcha debug full-xml hipe ldap mssql mysql odbc pam postgres redis
+IUSE="captcha debug full-xml ldap mssql mysql odbc pam postgres redis
 	roster-gw sip sqlite +stun zlib"
 
 RESTRICT="test"
@@ -196,7 +196,6 @@ src_configure() {
 		--enable-user=jabber \
 		$(use_enable debug) \
 		$(use_enable full-xml) \
-		$(use_enable hipe) \
 		$(use_enable mssql) \
 		$(use_enable mysql) \
 		$(use_enable odbc) \
