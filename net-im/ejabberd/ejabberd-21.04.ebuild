@@ -26,7 +26,7 @@ RESTRICT="test"
 # TODO: tools? (
 # TODO:		>=dev-erlang/luerl-0.3
 # TODO: )
-DEPEND=">=dev-lang/erlang-19.3[hipe?,odbc?,ssl]
+DEPEND=">=dev-lang/erlang-19.3[odbc?,ssl]
 	>=dev-erlang/cache_tab-1.0.28
 	>=dev-erlang/eimp-1.0.20
 	>=dev-erlang/fast_tls-1.1.12
@@ -184,10 +184,6 @@ src_prepare() {
 	sed -e "s|\(ERL_LIBS=\){{libdir}}.*|\1${ejabberd_erl_libs}|" \
 		-i "${S}/ejabberdctl.template" \
 		|| die 'failed to set ERL_LIBS in ejabberdctl.template'
-
-	sed -e "s|\(AC_INIT(ejabberd, \)m4_esyscmd([^)]*)|\1[$PV]|" \
-		-i configure.ac || die "Failed to write correct version to configure"
-	# eautoreconf # required in case of download from github
 }
 
 src_configure() {
