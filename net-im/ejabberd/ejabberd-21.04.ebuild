@@ -222,7 +222,7 @@ src_install() {
 	if use pam; then
 		local epam_path="$(get_ejabberd_path)/priv/bin/epam"
 
-		pamd_mimic_system xmpp auth account || die "cannot create pam.d file"
+		pamd_mimic_system xmpp auth account
 		into "$(get_ejabberd_path)/priv"
 		newbin epam-wrapper epam
 	fi
