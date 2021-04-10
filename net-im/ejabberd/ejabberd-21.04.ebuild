@@ -209,7 +209,6 @@ src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
 		--enable-user=jabber \
-		--disable-system-deps \
 		$(use_enable debug) \
 		$(use_enable full-xml) \
 		$(use_enable hipe) \
