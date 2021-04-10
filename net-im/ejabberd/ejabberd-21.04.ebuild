@@ -163,20 +163,6 @@ set_jabberbase_paths() {
 		|| die 'failed to set paths ejabberdctl.template'
 }
 
-# Skip installing docs because it's only COPYING that's installed by Makefile.
-skip_docs() {
-	gawk -i inplace '
-/# Documentation/, /^[[:space:]]*#?[[:space:]]*$/ {
-	if ($0 ~ /^[[:space:]]*#?[[:space:]]*$/) {
-		print $0;
-	} else {
-		next;
-	}
-}
-1
-' "${S}/Makefile.in" || die 'failed to remove docs section from Makefile.in'
-}
-
 src_prepare() {
 	default
 
@@ -184,7 +170,6 @@ src_prepare() {
 	correct_ejabberd_paths
 	set_jabberbase_paths
 	make_ejabberd_service
-	skip_docs
 	adjust_config
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
 
