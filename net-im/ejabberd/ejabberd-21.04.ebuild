@@ -5,7 +5,7 @@ EAPI=6
 
 SSL_CERT_MANDATORY=1
 
-inherit eutils pam rebar ssl-cert systemd tmpfiles
+inherit pam rebar ssl-cert systemd tmpfiles
 
 DESCRIPTION="Robust, scalable and extensible XMPP server"
 HOMEPAGE="https://www.ejabberd.im/ https://github.com/processone/ejabberd/"
@@ -95,7 +95,7 @@ correct_ejabberd_paths() {
 # it. epam-wrapper is placed into work directory. It is assumed no epam-wrapper
 # file exists there already.
 customize_epam_wrapper() {
-	local epam_wrapper_src="$1"
+	local epam_wrapper_src="${1}"
 	local epam_wrapper_dst="${S}/epam-wrapper"
 
 	[[ -e ${epam_wrapper_dst} ]] && die 'epam-wrapper already exists'
